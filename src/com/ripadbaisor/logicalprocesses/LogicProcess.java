@@ -1,6 +1,7 @@
 package com.ripadbaisor.logicalprocesses;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.ripadbaisor.datamanagement.Management;
 import com.ripadbaisor.restaurants.Restaurant;
@@ -40,24 +41,15 @@ public class LogicProcess {
         }
     }
 
-    /*
-     * public void showRestaurants() {
-     * ArrayList<Restaurant> orderedList = restaurantList;
-     * ArrayList<Restaurant> resultList = new ArrayList<>();
-     * 
-     * for (int i = 0; i < orderedList.size(); i++) {
-     * for (int j = i + 1; j < orderedList.size(); j++) {
-     * if (orderedList.get(i).getPunctuation() <
-     * orderedList.get(j).getPunctuation()) {
-     * resultList.add(orderedList.get(j));
-     * }
-     * }
-     * }
-     * for (Restaurant restaurant : resultList) {
-     * System.out.println(restaurant.toString());
-     * }
-     * }
-     */
+    public void showRestaurants() {
+        ArrayList<Restaurant> orderedList = restaurantList;
+
+        Collections.sort(orderedList);
+
+        for (Restaurant restaurant : orderedList) {
+            System.out.println(restaurant.toString());
+        }
+    }
 
     public void deleteRestaurant() {
         int index = Management.getRestaurantIndex();
