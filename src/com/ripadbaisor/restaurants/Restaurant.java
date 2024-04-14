@@ -46,4 +46,10 @@ public class Restaurant {
         this.punctuation = punctuation;
     }
 
+    @Override
+    public String toString() {
+        return "Restaurante [nombre=" + name + ", loacalizacion=" + localization + ", horario=" + schedule
+                + ", puntuacion=" + punctuation + "]";
+    }
+
 }
