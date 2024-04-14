@@ -1,6 +1,6 @@
 package com.ripadbaisor.restaurants;
 
-public class Restaurant {
+public class Restaurant implements Comparable<Restaurant> {
 
     private String name;
     private String localization;
@@ -50,6 +50,16 @@ public class Restaurant {
     public String toString() {
         return "Restaurante [nombre=" + name + ", loacalizacion=" + localization + ", horario=" + schedule
                 + ", puntuacion=" + punctuation + "]";
+    }
+
+    public int compareTo(Restaurant e) {
+        if (e.getPunctuation() < punctuation) {
+            return -1;
+        } else if (e.getPunctuation() < punctuation) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 
 }
