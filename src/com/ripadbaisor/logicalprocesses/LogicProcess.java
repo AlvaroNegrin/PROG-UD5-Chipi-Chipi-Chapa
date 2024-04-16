@@ -2,58 +2,123 @@ package com.ripadbaisor.logicalprocesses;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
+import javax.swing.JOptionPane;
 import com.ripadbaisor.datamanagement.Management;
 import com.ripadbaisor.restaurants.Restaurant;
 
 public class LogicProcess {
-
+    private boolean keepAsking;
     private ArrayList<Restaurant> restaurantList = new ArrayList<>();
+    private String menuMessage = """
+            1. Añadir Restaurante.
+            2. Editar Restaurante.
+            3. Mostrar Restaurantes.
+            4. Eliminar Restaurantes.
+            Q. Salir del programa.
+            """;
+
+    public boolean isKeepAsking() {
+        return this.keepAsking;
+    }
+
+    public void setKeepAsking(boolean keepAsking) {
+        this.keepAsking = keepAsking;
+    }
 
     public void addRestaurant() {
-        restaurantList.add(Management.restaurantData());
+        try {
+            restaurantList.add(Management.restaurantData());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Debes colocar un numero en el campo de la puntuación", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public void editRestaurant() {
 
-        int index = Management.getRestaurantIndex();
+        try {
+            int index = Management.getRestaurantIndex(restaurantList);
+            restaurantList.get(index).toString();
+            int element = Management.restaurantElementsMenu();
 
-        restaurantList.get(index).toString();
-
-        int element = Management.restaurantElementsMenu();
-
-        switch (element) {
-            case 1:
-                restaurantList.get(index).setName(Management.restaurantModifyElement());
-                break;
-            case 2:
-                restaurantList.get(index).setLocalization(Management.restaurantModifyElement());
-                break;
-            case 3:
-                restaurantList.get(index).setSchedule(Management.restaurantModifyElement());
-                break;
-            case 4:
-                restaurantList.get(index).setPunctuation(Float.parseFloat(Management.restaurantModifyElement()));
-                break;
-
-            default:
-                break;
+            switch (element) {
+                case 0:
+                    return;
+                case 1:
+                    restaurantList.get(index).setName(Management.restaurantModifyElement());
+                    break;
+                case 2:
+                    restaurantList.get(index).setLocalization(Management.restaurantModifyElement());
+                    break;
+                case 3:
+                    restaurantList.get(index).setSchedule(Management.restaurantModifyElement());
+                    break;
+                case 4:
+                    restaurantList.get(index).setPunctuation(Float.parseFloat(Management.restaurantModifyElement()));
+                    break;
+                default:
+                    break;
+            }
+        } catch (IndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null, "Debes introducir un valor valido", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Debes colocar un numero valido", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void showRestaurants() {
         ArrayList<Restaurant> orderedList = restaurantList;
-
         Collections.sort(orderedList);
+        String message = "";
 
         for (Restaurant restaurant : orderedList) {
-            System.out.println(restaurant.toString());
+            message += restaurant.toString();
         }
+
+        JOptionPane.showMessageDialog(null, message, "Lista de restaurantes", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void deleteRestaurant() {
-        int index = Management.getRestaurantIndex();
-        restaurantList.remove(index);
+        try {
+            restaurantList.remove(Management.restaurantsToDelete(restaurantList));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Debes colocar un numero valido", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } catch (IndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null, "Debes introducir un valor valido", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void mainMenu() {
+            String message = JOptionPane.showInputDialog(null, menuMessage, "Menu Principal", JOptionPane.INFORMATION_MESSAGE);
+
+            if (message != null) {
+
+                switch (message.toUpperCase()) {
+                    case "1":
+                        this.addRestaurant();
+                        break;
+                    case "2":
+                        this.editRestaurant();
+                        break;
+                    case "3":
+                        this.showRestaurants();
+                        break;
+                    case "4":
+                        this.deleteRestaurant();
+                        break;
+                    case "Q":
+                        this.setKeepAsking(false);
+                        break;
+                    default:
+                    JOptionPane.showMessageDialog(null, "Opción invalida", "ERROR", JOptionPane.ERROR_MESSAGE);
+                        break;
+                }
+            }
+
+        if (message == null) {
+            JOptionPane.showMessageDialog(null, "¡Adios, gracias por usar nuestro programa!", "Despedida", JOptionPane.INFORMATION_MESSAGE);
+            this.setKeepAsking(false);
+        }
+        
     }
 
 }
