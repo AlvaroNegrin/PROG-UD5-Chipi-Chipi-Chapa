@@ -3,7 +3,7 @@ package com.ripadbaisor.logicalprocesses;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JOptionPane;
-import com.ripadbaisor.datamanagement.Management;
+import com.ripadbaisor.datamanagement.InputRequester;
 import com.ripadbaisor.restaurants.Restaurant;
 
 public class LogicProcess {
@@ -20,7 +20,7 @@ public class LogicProcess {
 
     public void addRestaurant() {
         try {
-            restaurantList.add(Management.restaurantData());
+            restaurantList.add(InputRequester.restaurantData());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Debes colocar un numero en el campo de la puntuación", "ERROR",
                     JOptionPane.ERROR_MESSAGE);
@@ -30,24 +30,25 @@ public class LogicProcess {
     public void editRestaurant() {
 
         try {
-            int index = Management.getRestaurantIndex(restaurantList);
+            int index = InputRequester.getRestaurantIndex(restaurantList);
             restaurantList.get(index).toString();
-            int element = Management.restaurantElementsMenu();
+            int element = InputRequester.restaurantElementsMenu();
 
             switch (element) {
                 case 0:
                     return;
                 case 1:
-                    restaurantList.get(index).setName(Management.restaurantModifyElement());
+                    restaurantList.get(index).setName(InputRequester.restaurantModifyElement());
                     break;
                 case 2:
-                    restaurantList.get(index).setLocalization(Management.restaurantModifyElement());
+                    restaurantList.get(index).setLocalization(InputRequester.restaurantModifyElement());
                     break;
                 case 3:
-                    restaurantList.get(index).setSchedule(Management.restaurantModifyElement());
+                    restaurantList.get(index).setSchedule(InputRequester.restaurantModifyElement());
                     break;
                 case 4:
-                    restaurantList.get(index).setPunctuation(Float.parseFloat(Management.restaurantModifyElement()));
+                    restaurantList.get(index)
+                            .setPunctuation(Float.parseFloat(InputRequester.restaurantModifyElement()));
                     break;
                 default:
                     break;
@@ -73,7 +74,7 @@ public class LogicProcess {
 
     public void deleteRestaurant() {
         try {
-            restaurantList.remove(Management.restaurantsToDelete(restaurantList));
+            restaurantList.remove(InputRequester.restaurantsToDelete(restaurantList));
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Debes colocar un numero valido", "ERROR", JOptionPane.ERROR_MESSAGE);
         } catch (IndexOutOfBoundsException e) {

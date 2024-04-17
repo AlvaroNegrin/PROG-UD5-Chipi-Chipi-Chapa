@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import com.ripadbaisor.restaurants.Restaurant;
 
-public class Management {
+public class InputRequester {
 
     public static Restaurant restaurantData() throws NumberFormatException {
         String name = JOptionPane.showInputDialog("Nombre del restaurante");
@@ -21,17 +21,17 @@ public class Management {
             message += (i + 1) + ".- " + restaurants.get(i).getName() + "\n";
         }
 
-        return (Integer.parseInt(JOptionPane.showInputDialog(null, 
-        message, "SELECTOR", JOptionPane.QUESTION_MESSAGE)) - 1);
+        return (Integer.parseInt(JOptionPane.showInputDialog(null,
+                message, "SELECTOR", JOptionPane.QUESTION_MESSAGE)) - 1);
     }
 
     public static int restaurantElementsMenu() throws NumberFormatException {
         return Integer.parseInt(JOptionPane.showInputDialog(null, """
-                    1- Nombre
-                    2- Localizacion
-                    3- Horarios
-                    4- Puntuacion
-                    """, "Menu de edición", JOptionPane.QUESTION_MESSAGE));
+                1- Nombre
+                2- Localizacion
+                3- Horarios
+                4- Puntuacion
+                """, "Menu de edición", JOptionPane.QUESTION_MESSAGE));
     }
 
     public static String restaurantModifyElement() {
@@ -39,7 +39,8 @@ public class Management {
                 JOptionPane.QUESTION_MESSAGE);
     }
 
-    public static int restaurantsToDelete(ArrayList<Restaurant> restaurants) throws NumberFormatException , IndexOutOfBoundsException{
+    public static int restaurantsToDelete(ArrayList<Restaurant> restaurants)
+            throws NumberFormatException, IndexOutOfBoundsException {
         String message = "";
         for (int i = 0; i < restaurants.size(); i++) {
             message += (i + 1) + ".- " + restaurants.get(i).getName() + "\n";
