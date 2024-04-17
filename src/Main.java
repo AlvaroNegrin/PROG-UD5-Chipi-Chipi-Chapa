@@ -1,11 +1,11 @@
-import com.ripadbaisor.logicalprocesses.LogicProcess;
+import com.ripadbaisor.menus.Menu;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        LogicProcess logic = new LogicProcess();
-        logic.setKeepAsking(true);
-        while (logic.isKeepAsking()) {
-            logic.mainMenu();
+        Menu menu = new Menu();
+        menu.setKeepAsking(true);
+        while (menu.isKeepAsking()) {
+            menu.showMainMenu();
         }
     }
 }

@@ -9,13 +9,6 @@ import com.ripadbaisor.restaurants.Restaurant;
 public class LogicProcess {
     private boolean keepAsking;
     private ArrayList<Restaurant> restaurantList = new ArrayList<>();
-    private String menuMessage = """
-            1. Añadir Restaurante.
-            2. Editar Restaurante.
-            3. Mostrar Restaurantes.
-            4. Eliminar Restaurantes.
-            Q. Salir del programa.
-            """;
 
     public boolean isKeepAsking() {
         return this.keepAsking;
@@ -29,7 +22,8 @@ public class LogicProcess {
         try {
             restaurantList.add(Management.restaurantData());
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Debes colocar un numero en el campo de la puntuación", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Debes colocar un numero en el campo de la puntuación", "ERROR",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -85,40 +79,6 @@ public class LogicProcess {
         } catch (IndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(null, "Debes introducir un valor valido", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-    }
-
-    public void mainMenu() {
-            String message = JOptionPane.showInputDialog(null, menuMessage, "Menu Principal", JOptionPane.INFORMATION_MESSAGE);
-
-            if (message != null) {
-
-                switch (message.toUpperCase()) {
-                    case "1":
-                        this.addRestaurant();
-                        break;
-                    case "2":
-                        this.editRestaurant();
-                        break;
-                    case "3":
-                        this.showRestaurants();
-                        break;
-                    case "4":
-                        this.deleteRestaurant();
-                        break;
-                    case "Q":
-                        this.setKeepAsking(false);
-                        break;
-                    default:
-                    JOptionPane.showMessageDialog(null, "Opción invalida", "ERROR", JOptionPane.ERROR_MESSAGE);
-                        break;
-                }
-            }
-
-        if (message == null) {
-            JOptionPane.showMessageDialog(null, "¡Adios, gracias por usar nuestro programa!", "Despedida", JOptionPane.INFORMATION_MESSAGE);
-            this.setKeepAsking(false);
-        }
-        
     }
 
 }
