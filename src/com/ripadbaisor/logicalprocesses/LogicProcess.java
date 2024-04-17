@@ -49,6 +49,11 @@ public class LogicProcess {
                 case 4:
                     restaurantList.get(index)
                             .setPunctuation(Float.parseFloat(InputRequester.restaurantModifyElement()));
+                    if (restaurantList.get(index).getPunctuation() > 10f) {
+                        restaurantList.get(index).setPunctuation(10f);
+                    } else if (restaurantList.get(index).getPunctuation() < 1f) {
+                        restaurantList.get(index).setPunctuation(1f);
+                    }
                     break;
                 default:
                     break;
