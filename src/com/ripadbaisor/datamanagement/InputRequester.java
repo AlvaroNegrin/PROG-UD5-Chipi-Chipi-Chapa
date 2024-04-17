@@ -11,6 +11,13 @@ public class InputRequester {
         String location = JOptionPane.showInputDialog("Localizacion");
         String schedule = JOptionPane.showInputDialog("Horario semanal");
         float punctuation = Float.parseFloat(JOptionPane.showInputDialog("Puntuacion 1/10"));
+
+        if (punctuation > 10f) {
+            punctuation = 10f;
+        } else if (punctuation < 1f) {
+            punctuation = 1f;
+        }
+
         Restaurant restaurant = new Restaurant(name, location, schedule, punctuation);
         return restaurant;
     }
