@@ -49,11 +49,10 @@ public class LogicProcess {
                 case 4:
                     restaurantList.get(index)
                             .setPunctuation(Float.parseFloat(InputRequester.restaurantModifyElement()));
-                    if (restaurantList.get(index).getPunctuation() > 10f) {
-                        restaurantList.get(index).setPunctuation(10f);
-                    } else if (restaurantList.get(index).getPunctuation() < 1f) {
-                        restaurantList.get(index).setPunctuation(1f);
-                    }
+                            while (restaurantList.get(index).getPunctuation() < 1 || restaurantList.get(index).getPunctuation() > 10) {
+                                restaurantList.get(index).setPunctuation(Float.parseFloat(JOptionPane.showInputDialog(null, 
+                                "Debe introducir un numero valido entre 1-10", "ERROR", JOptionPane.ERROR_MESSAGE)));
+                            }
                     break;
                 default:
                     break;
