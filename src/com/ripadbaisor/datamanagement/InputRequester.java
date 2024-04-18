@@ -44,8 +44,10 @@ public class InputRequester {
     }
 
     public static String restaurantModifyElement() {
-        return JOptionPane.showInputDialog(null, "Introduzca el nuevo dato", "Introduccion",
+        String newElement = JOptionPane.showInputDialog(null, "Introduzca el nuevo dato", "Introduccion",
                 JOptionPane.QUESTION_MESSAGE);
+        newElement = checkIfStringIsNotNull(newElement);
+        return newElement;
     }
 
     public static int restaurantsToDelete(ArrayList<Restaurant> restaurants)
