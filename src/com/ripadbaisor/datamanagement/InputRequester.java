@@ -12,10 +12,8 @@ public class InputRequester {
         String schedule = JOptionPane.showInputDialog("Horario semanal");
         float punctuation = Float.parseFloat(JOptionPane.showInputDialog("Puntuacion 1/10"));
 
-        if (punctuation > 10f) {
-            punctuation = 10f;
-        } else if (punctuation < 1f) {
-            punctuation = 1f;
+        while (punctuation < 1 || punctuation > 10) {
+            punctuation = Float.parseFloat(JOptionPane.showInputDialog(null, "Debe introducir un numero valido entre 1-10", "ERROR", JOptionPane.ERROR_MESSAGE));
         }
 
         Restaurant restaurant = new Restaurant(name, location, schedule, punctuation);
