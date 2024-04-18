@@ -1,18 +1,11 @@
-## Getting Started
+# Ranking de Restaurantes
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este proyecto ha sido realizado por los alumnos del **CFGS 1<sup>er</sup> DAM**:
 
-## Folder Structure
+- Alvaro Negrin Hernández
+- Diego Andrés Ochoa Morales
 
-The workspace contains two folders by default, where:
+Su objetivo es proporcionar al usuario un programa que le permita almacenar, gestionar y puntuar restaurantes en resumen con una pequeña y amigable interfaz gráfica. 
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- Para saber como utilizar el programa con el **Manual de usuario** haga click [**aqui**](docs/USER_MANUAL.md)
+- Para saber el **codigo fuente** del programa haga haga click [**aqui**](docs/CODE_OF_CONDUCT.md)
