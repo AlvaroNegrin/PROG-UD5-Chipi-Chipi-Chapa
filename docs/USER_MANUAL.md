@@ -129,9 +129,11 @@ eliminar el restaurante deseado.
 Si usted coloca una información vacía o un índice inválido (que no exista), se mostrarán las siguientes ventanas: 
 
 - Informacion vacía
+
 ![image](https://github.com/AlvaroNegrin/PROG-UD5-Chipi-Chipi-Chapa/assets/159430287/acc838a0-837f-4f91-a692-f860ca14bca8)
 
 - Indice inválido
+
 ![image](https://github.com/AlvaroNegrin/PROG-UD5-Chipi-Chipi-Chapa/assets/159430287/e738bfe0-ace5-450c-9a69-9e8136bc1962)
 
 ### Salir del Programa
